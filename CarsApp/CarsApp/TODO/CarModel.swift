@@ -24,7 +24,8 @@ import Foundation
 /*
  TODO: Written question
     Why did we decide to use a Struct instead of a Class to represent a car model?
- 
+    We decided to use a Struct instead of a Class to represent a car model because a Struct has a property that is pass by
+    value which means that it creates a copy of the variable passed in, so that the original data does not change.
     (type here)
  */
 
@@ -34,20 +35,33 @@ struct CarModel: Identifiable, Hashable {
     let id: String // DO NOT EDIT THIS. This is the model id, and is used by the UI.
     
     // TODO: complete the struct's implementation
+    let carBrand: CarBrand
+    let modelName: String
+    let topSpeed: Int
+    let color: String
+    let fuelCapacity: Int
     
+    init(id: String, carBrand: CarBrand, modelName: String, topSpeed: Int, color: String, fuelCapacity: Int) {
+        self.id = id
+        self.carBrand = carBrand
+        self.modelName = modelName
+        self.topSpeed = topSpeed
+        self.color = color
+        self.fuelCapacity = fuelCapacity
+    }
     
     // TODO: These are functions used by the UI to display the model's data, right now they return default values. Fix it such that it returns the correct value.
     
     func getBrandYear() -> String {
-        return "1920"
+        return carBrand.yearFounded
     }
     
     func getBrandFact() -> String {
-        return "Mercedes Benz invented the first gasoline-powered automobile."
+        return carBrand.fact
     }
     
     func getBrandName() -> String {
-        return "Mercedes"
+        return carBrand.brandName
     }
     
     func getModelID() -> String {
@@ -55,21 +69,18 @@ struct CarModel: Identifiable, Hashable {
     }
     
     func getModelName() -> String {
-        return "G-Wagon"
+        return modelName
     }
     
     func getTopSpeed() -> Int {
-        return 120
+        return topSpeed
     }
     
     func getColor() -> String {
-        return "Red"
+        return color
     }
     
     func getFuel() -> Int {
-        return 100
+        return fuelCapacity
     }
-    
 }
-
-
